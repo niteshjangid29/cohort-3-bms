@@ -13,6 +13,8 @@ jobs:
       - name: SSH into the server
         run: |
           echo "${{ secrets.RSA_PRIVATE_KEY }}" > ~/ssh_key
+          mkdir .ssh
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           chmod 600 ~/ssh_key
           ssh -i ~/ssh_key ubuntu@3.88.137.128
           cd cohort-3-bms/ && git pull
