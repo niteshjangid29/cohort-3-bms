@@ -12,12 +12,12 @@ jobs:
     steps:
       - name: SSH into the server
         run: |
-          echo "${{ secrets.RSA_PRIVATE_KEY }}" > ~/ssh_key
+          echo "${{ secrets.RSA_PRIVATE_KEY }}" &> ~/ssh_key
           mkdir -p /home/runner/.ssh
           ls /home/runner/.ssh
           touch /home/runner/.ssh/known_hosts 
-          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-          chmod 700 ~/ssh_key
+          echo "${{ secrets.KNOWN_HOSTS }}" &> ~/.ssh/known_hosts
+          chmod 700 /home/runner/ssh_key
           ssh -i ~/ssh_key ubuntu@3.88.137.128
           cd cohort-3-bms/ && git pull
           pnpm install
