@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: SSH into the server
+      - name: SSH into the ec2 server
         run: |
           echo "${{ secrets.RSA_PRIVATE_KEY }}" &> ~/ssh_key
           mkdir -p /home/runner/.ssh
